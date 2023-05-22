@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "265963-laim_sht.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

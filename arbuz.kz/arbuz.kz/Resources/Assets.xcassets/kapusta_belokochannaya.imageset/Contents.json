@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "192649-kapusta_belokochannaya_molodaya.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

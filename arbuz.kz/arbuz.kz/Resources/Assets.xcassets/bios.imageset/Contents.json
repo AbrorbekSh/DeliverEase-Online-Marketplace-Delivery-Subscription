@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "20020-bio-s_fud_master_t_p_500_ml.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

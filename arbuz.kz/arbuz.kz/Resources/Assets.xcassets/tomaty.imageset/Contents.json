@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "245314-tomaty_na_vetke_kg.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
