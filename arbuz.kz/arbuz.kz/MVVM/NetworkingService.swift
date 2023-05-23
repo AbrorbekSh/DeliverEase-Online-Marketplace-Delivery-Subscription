@@ -13,7 +13,27 @@ final class NetworkingService {
         return products
     }
     
+    
     private let products = [banany, kiwi, kapusta_cvetnaya, apelsiny, apples, avokado, bios, dynya, iogurt_foodmaster, kartofel, laim, limon, luk_belyi, maslo, moloko_naturalnoe, morkov, iogurt_danone, perec_polugorkii_krasnyi, redis, snezhok, syr_lamber, syr_klub, tomaty, tvorog_emil, tvorog_prostokvashino]
+    
+    //Simulation :)
+//    func configureImage(with url: String, completion: @escaping (UIImage) -> Void){
+//        guard let url = URL(string: url) else {
+//            return
+//        }
+//        let task = URLSession.shared.dataTask(with: url) {  data, _, error in
+//            guard let data = data, error == nil else {
+//                return
+//            }
+//                let image = UIImage(data: data)
+//                DispatchQueue.main.async{
+//                    if let image = image {
+//                        completion(image)
+//                    }
+//                }
+//        }
+//        task.resume()
+//    }
 }
 
 let banany = Product(

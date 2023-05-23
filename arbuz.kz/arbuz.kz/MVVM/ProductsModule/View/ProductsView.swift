@@ -142,20 +142,13 @@ final class ProductsViewImpl: UIViewController, ProductsView {
 extension ProductsViewImpl: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard collectionView == self.collectionView else {
-            return context.count
+            return products.count
         }
-        return products.count
+        return context.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.productsCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            cell.product = products[indexPath.row]
-            
-            return cell
-        } else {
+        guard collectionView == self.productsCollectionView else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonsCollectionViewCell.identifier, for: indexPath)  as? ButtonsCollectionViewCell else {
                 return UICollectionViewCell()
             }
@@ -166,31 +159,39 @@ extension ProductsViewImpl: UICollectionViewDelegate, UICollectionViewDataSource
             }
             return cell
         }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.product = products[indexPath.row]
+        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == self.collectionView {
-            guard let selectedCell = collectionView.cellForItem(at: indexPath as IndexPath) as? ButtonsCollectionViewCell else { return }
-            
-            selectedCell.didSelected()
-            
-            guard let unselectedCell = collectionView.cellForItem(at: previousIndexPath as IndexPath) as? ButtonsCollectionViewCell else { return }
-            
-            unselectedCell.unselect()
-            previousIndexPath = indexPath
-            
-            viewModel.filterProducts(type: selectedCell.getType())
+        guard collectionView == self.collectionView else {
+            return
         }
+        
+        guard let selectedCell = collectionView.cellForItem(at: indexPath as IndexPath) as? ButtonsCollectionViewCell else { return }
+        
+        selectedCell.didSelected()
+        
+        guard let unselectedCell = collectionView.cellForItem(at: previousIndexPath as IndexPath) as? ButtonsCollectionViewCell else { return }
+        
+        unselectedCell.unselect()
+        previousIndexPath = indexPath
+        
+        viewModel.filterProducts(type: selectedCell.getType())
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         guard collectionView == self.collectionView else {
             return CGSize(width: view.frame.size.width/2-24, height: view.frame.size.width/2 + 50)
         }
         return CGSize(
             width: context[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)]).width + 25,
-            height: 30)
-        
+            height: 30
+        )
     }
 }

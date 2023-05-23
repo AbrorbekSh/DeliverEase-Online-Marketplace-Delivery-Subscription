@@ -62,4 +62,10 @@ final class Assembly {
         
         return finishView
     }
+    
+    func makeMapViewController() -> UIViewController {
+        let mapView = MapViewController()
+        
+        return mapView
+    }
 }

@@ -33,7 +33,9 @@ final class AddressRouterImpl: AddressRouter {
     // MARK: - Internal Methods
     
     func openMap(with completion: @escaping ((String) -> Void)) {
-        let mapViewController = MapViewController()
+        guard let mapViewController = Assembly.shared.makeMapViewController() as? MapViewController else {
+            return 
+        }
         mapViewController.completion = completion
         let naviagtionController = UINavigationController(rootViewController: mapViewController)
         naviagtionController.modalPresentationStyle = .fullScreen
