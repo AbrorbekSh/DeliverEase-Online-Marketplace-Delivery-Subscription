@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 protocol ProductsRouter: AnyObject {
-    var view: UIViewController! { get set }
+    var view: UIViewController { get set }
 }
 
 final class ProductsRouterImpl: ProductsRouter {
 
     // MARK: - Properties
 
-    var view: UIViewController!
+    var view: UIViewController
 
     // MARK: - Lifecycle
 

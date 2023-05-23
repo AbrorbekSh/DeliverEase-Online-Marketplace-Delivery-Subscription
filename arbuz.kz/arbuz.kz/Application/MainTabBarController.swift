@@ -34,7 +34,7 @@ final class MainTabBarController: UITabBarController {
         let cartViewNav = UINavigationController(rootViewController: cartView)
         cartView.tabBarItem.image = UIImage(systemName: "cart")
         
-        let favouritesView = FovouriteItemsViewController()
+        let favouritesView = Assembly.shared.makeFavouriteItemsModuleView()
         let favouritesViewNav = UINavigationController(rootViewController: favouritesView)
         favouritesView.tabBarItem.image = UIImage(systemName: "heart")
         

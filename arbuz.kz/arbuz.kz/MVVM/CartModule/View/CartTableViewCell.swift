@@ -44,6 +44,7 @@ final class CartTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
         contentView.addSubview(productImageView)
         contentView.addSubview(contentStackView)
+        
         contentStackView.addArrangedSubview(productName)
         contentStackView.addArrangedSubview(amountMeasure)
         contentStackView.addArrangedSubview(counterButton)

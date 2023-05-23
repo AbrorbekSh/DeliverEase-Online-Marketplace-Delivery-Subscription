@@ -21,6 +21,12 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var isFavouirteState: Bool = false {
+        didSet{
+            setFavouriteState(isFavouirteState)
+        }
+    }
+    
     //MARK: -LifeCycle
     
     override init(frame: CGRect){
@@ -44,6 +50,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
     
     private func setupView(){
         contentView.addSubview(contentStackView)
+        contentView.addSubview(favouriteButton)
         contentStackView.addArrangedSubview(imageView)
         contentStackView.addArrangedSubview(productName)
         contentStackView.addArrangedSubview(counterButton)
@@ -56,6 +63,11 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             contentStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
             
+            favouriteButton.heightAnchor.constraint(equalToConstant: 18),
+            favouriteButton.widthAnchor.constraint(equalToConstant: 18),
+            favouriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            favouriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            
             imageView.heightAnchor.constraint(equalToConstant: contentView.frame.size.width),
             imageView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width),
             
@@ -64,6 +76,34 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             
             productName.heightAnchor.constraint(equalToConstant: 20)
         ])
+    }
+    
+    //MARK: - Pricate methods
+    
+    private func setFavouriteState(_ isFavourite: Bool){
+        switch isFavourite {
+        case true:
+            var configuration = UIButton.Configuration.filled()
+            configuration.image = UIImage(systemName: "suit.heart.fill",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .medium))
+            configuration.baseForegroundColor = .systemRed
+            configuration.baseBackgroundColor = .clear
+            favouriteButton.configuration = configuration
+        case false:
+            var configuration = UIButton.Configuration.filled()
+            configuration.image = UIImage(systemName: "heart",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .medium))
+            configuration.baseForegroundColor = .systemGray
+            configuration.baseBackgroundColor = .clear
+            favouriteButton.configuration = configuration
+        }
+    }
+    
+    //MARK: - Objective-C methods
+    
+    @objc private func favouriteButtonPressed(){
+        isFavouirteState = !isFavouirteState
+        setFavouriteState(isFavouirteState)
     }
       
     //MARK: - UI Elements
@@ -78,6 +118,21 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         view.alignment = .leading
         
         return view
+    }()
+    
+    private let favouriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        var configuration = UIButton.Configuration.filled()
+        configuration.image = UIImage(systemName: "heart",
+                                      withConfiguration: UIImage.SymbolConfiguration(pointSize: 18, weight: .medium))
+        configuration.baseForegroundColor = .systemGray
+        configuration.baseBackgroundColor = .clear
+        button.configuration = configuration
+        button.addTarget(self, action: #selector(favouriteButtonPressed), for: .touchUpInside)
+        
+        return button
     }()
     
     private let imageView: UIImageView = {

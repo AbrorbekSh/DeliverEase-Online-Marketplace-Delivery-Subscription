@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class Product {
+final class Product: Hashable {
     let image: UIImage
     let name: String
     let price: Int
@@ -24,5 +24,13 @@ final class Product {
         self.type = type
         self.measure = measure
         self.availableAmount = availableAmount
+    }
+    
+    
+    static func == (lhs: Product, rhs: Product) -> Bool {
+        return lhs.name == lhs.name
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
     }
 }

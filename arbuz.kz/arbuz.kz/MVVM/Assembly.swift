@@ -24,6 +24,17 @@ final class Assembly {
         return router.view
     }
     
+    func makeFavouriteItemsModuleView() -> UIViewController {
+        let model = FavouriteItemsModel()
+        
+        let router = FavouriteItemsRouterImpl(
+            model: model,
+            networkingService: networkingService
+        )
+        
+        return router.view
+    }
+    
     func makeCartModuleView() -> UIViewController {
         let model = CartModel()
         

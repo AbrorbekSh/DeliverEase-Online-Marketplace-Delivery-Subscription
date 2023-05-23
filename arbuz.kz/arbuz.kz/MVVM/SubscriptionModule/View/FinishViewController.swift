@@ -58,7 +58,7 @@ final class FinishViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Вы успешно оформили подписку!"
+        label.text = "Подписка оформлена!"
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textColor = .systemGreen
         label.textAlignment = .center
