@@ -107,7 +107,7 @@ final class AddressViewImpl: UIViewController, AddressView {
          if !streetTextField.text.isEmpty {
              addressComponents.append(streetTextField.text)
          } else {
-             viewModel.dismissAddressView()
+             streetTextField.layer.borderColor = UIColor.systemRed.cgColor
              return
          }
          
@@ -154,11 +154,7 @@ final class AddressViewImpl: UIViewController, AddressView {
     private lazy var flatTextField: CustomTextField = {
         let textField = CustomTextField(delegate: self)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        textField.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
-        textField.layer.borderWidth = 1
         textField.setPlaceHolder(placeholder: "Квартира")
-
         
         return textField
     }()
@@ -166,9 +162,6 @@ final class AddressViewImpl: UIViewController, AddressView {
     private lazy var podezdTextField: CustomTextField = {
         let textField = CustomTextField(delegate: self)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        textField.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
-        textField.layer.borderWidth = 1
         textField.setPlaceHolder(placeholder: "Подъезд")
 
         
@@ -178,9 +171,6 @@ final class AddressViewImpl: UIViewController, AddressView {
     private lazy var floorTextField: CustomTextField = {
         let textField = CustomTextField(delegate: self)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        textField.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
-        textField.layer.borderWidth = 1
         textField.setPlaceHolder(placeholder: "Этаж")
 
         

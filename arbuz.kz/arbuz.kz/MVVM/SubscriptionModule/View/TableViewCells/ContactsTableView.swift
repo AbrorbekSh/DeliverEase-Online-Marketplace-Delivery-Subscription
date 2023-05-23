@@ -58,9 +58,6 @@ final class ContactsTableViewCell: UITableViewCell {
         let textField = CustomTextField(delegate: delegate)
         textField.translatesAutoresizingMaskIntoConstraints = false
         
-        textField.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
-        textField.layer.borderWidth = 1
-        
         return textField
     }()
 }

@@ -55,12 +55,14 @@ final class CustomTextField: UIView {
     private func setupTextField() {
         self.layer.cornerRadius = Constants.radius
         self.backgroundColor = .white
+        self.layer.borderColor = UIColor.systemGray.withAlphaComponent(0.3).cgColor
+        self.layer.borderWidth = 1
         
-        addSubviews()
+        setupView()
         setupLayout()
     }
     
-    private func addSubviews(){
+    private func setupView(){
         self.addSubview(textField)
     }
     
