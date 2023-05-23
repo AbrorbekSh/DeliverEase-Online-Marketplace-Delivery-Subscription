@@ -22,6 +22,8 @@
 		212149AB2A1CBBE700AD93DE /* FavouriteItemsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149AA2A1CBBE700AD93DE /* FavouriteItemsRouter.swift */; };
 		212149AD2A1CBC7F00AD93DE /* FavouriteItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149AC2A1CBC7F00AD93DE /* FavouriteItemsViewModel.swift */; };
 		212149B02A1CBD9200AD93DE /* FavouriteItemsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149AF2A1CBD9200AD93DE /* FavouriteItemsModel.swift */; };
+		21339E752A1D395100644474 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21339E742A1D395100644474 /* CoreDataService.swift */; };
+		21339E782A1D3A3800644474 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21339E762A1D3A3800644474 /* DataModel.xcdatamodeld */; };
 		21603CC92A1A61BA009297A8 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CC82A1A61BA009297A8 /* AddressView.swift */; };
 		21603CCB2A1B31CC009297A8 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CCA2A1B31CC009297A8 /* MapView.swift */; };
 		21603CCD2A1B338D009297A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CCC2A1B338D009297A8 /* LocationManager.swift */; };
@@ -67,6 +69,8 @@
 		212149AA2A1CBBE700AD93DE /* FavouriteItemsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItemsRouter.swift; sourceTree = "<group>"; };
 		212149AC2A1CBC7F00AD93DE /* FavouriteItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItemsViewModel.swift; sourceTree = "<group>"; };
 		212149AF2A1CBD9200AD93DE /* FavouriteItemsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteItemsModel.swift; sourceTree = "<group>"; };
+		21339E742A1D395100644474 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		21339E772A1D3A3800644474 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		21603CC82A1A61BA009297A8 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		21603CCA2A1B31CC009297A8 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		21603CCC2A1B338D009297A8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -313,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				2121497E2A1BC96900AD93DE /* NetworkingService.swift */,
+				21339E742A1D395100644474 /* CoreDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				21339E6E2A1D1C4600644474 /* Services */,
 				21E3E6152A15EB2900B50E9E /* Resources */,
 				21C74DF82A1771C4002A5FA3 /* Reusable UI Elements */,
+				21339E762A1D3A3800644474 /* DataModel.xcdatamodeld */,
 			);
 			path = arbuz.kz;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 				212149982A1C786400AD93DE /* SubscriptionModel.swift in Sources */,
 				212149942A1C77A100AD93DE /* SubscriptionRouter.swift in Sources */,
 				21C74E012A17B956002A5FA3 /* SubscriptionView.swift in Sources */,
+				21339E782A1D3A3800644474 /* DataModel.xcdatamodeld in Sources */,
 				21C74E102A18B1A6002A5FA3 /* MainTabBarController.swift in Sources */,
 				21C74DF12A160391002A5FA3 /* ProductCollectionViewCell.swift in Sources */,
 				21603CCB2A1B31CC009297A8 /* MapView.swift in Sources */,
@@ -521,6 +528,7 @@
 				21E3E6002A15E14E00B50E9E /* AppDelegate.swift in Sources */,
 				21C74DEB2A15F15F002A5FA3 /* ProductsView.swift in Sources */,
 				212149882A1C6BD600AD93DE /* CartRouter.swift in Sources */,
+				21339E752A1D395100644474 /* CoreDataService.swift in Sources */,
 				2121497F2A1BC96900AD93DE /* NetworkingService.swift in Sources */,
 				21603CDA2A1BBDAC009297A8 /* ProductsRouter.swift in Sources */,
 				21603CD52A1BBC26009297A8 /* ProductsModel.swift in Sources */,
@@ -740,6 +748,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		21339E762A1D3A3800644474 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				21339E772A1D3A3800644474 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 21339E772A1D3A3800644474 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 21E3E5F42A15E14E00B50E9E /* Project object */;
 }
