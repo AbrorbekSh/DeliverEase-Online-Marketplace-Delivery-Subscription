@@ -8,6 +8,6 @@
 import Foundation
 
 struct AddressModel {
-    
+    var address: String
 }
 
