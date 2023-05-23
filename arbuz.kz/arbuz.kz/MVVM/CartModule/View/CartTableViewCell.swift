@@ -11,6 +11,17 @@ final class CartTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: CartTableViewCell.self)
     
+    //MARK: - Properties
+    
+    var product: Product? {
+        didSet {
+            productImageView.image = product?.image
+            productName.text = product?.name
+            amountMeasure.text = product?.measure
+            counterButton.product = product
+        }
+    }
+    
     //MARK: - LifeCycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -53,16 +64,6 @@ final class CartTableViewCell: UITableViewCell {
             counterButton.heightAnchor.constraint(equalToConstant: 35),
             counterButton.widthAnchor.constraint(equalToConstant: 110),
         ])
-    }
-    
-    //MARK: - internal Methods
-    
-    func configureCell(product: Product){
-        productImageView.image = product.image
-        productName.text = product.name
-        amountMeasure.text = product.measure
-        
-        counterButton.configureCounter(product: product)
     }
     
     //MARK: - UI Elements

@@ -11,6 +11,14 @@ final class ButtonsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: ProductCollectionViewCell.self)
     
+    //MARK: - Properties
+    
+    var title = "" {
+        didSet {
+            titleLabel.text = title
+        }
+    }
+    
     //MARK: - LifeCycle
     
     override init(frame: CGRect){
@@ -56,10 +64,6 @@ final class ButtonsCollectionViewCell: UICollectionViewCell {
     func unselect(){
         contentView.backgroundColor = .systemGray.withAlphaComponent(0.1)
         titleLabel.textColor = .black
-    }
-    
-    func configureCell(title: String) {
-        titleLabel.text = title
     }
     
     func getType() -> String {

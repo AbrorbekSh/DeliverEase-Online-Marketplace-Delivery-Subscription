@@ -7,21 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21603CC92A1A61BA009297A8 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CC82A1A61BA009297A8 /* AddressViewController.swift */; };
+		2121497D2A1BC2FA00AD93DE /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2121497C2A1BC2FA00AD93DE /* ProductsViewModel.swift */; };
+		2121497F2A1BC96900AD93DE /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2121497E2A1BC96900AD93DE /* NetworkingService.swift */; };
+		212149812A1BE0C800AD93DE /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149802A1BE0C800AD93DE /* Product.swift */; };
+		212149882A1C6BD600AD93DE /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149872A1C6BD600AD93DE /* CartRouter.swift */; };
+		2121498A2A1C6C1C00AD93DE /* CartVeiwModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149892A1C6C1C00AD93DE /* CartVeiwModel.swift */; };
+		2121498D2A1C6DB200AD93DE /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2121498C2A1C6DB200AD93DE /* CartModel.swift */; };
+		212149942A1C77A100AD93DE /* SubscriptionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149932A1C77A100AD93DE /* SubscriptionRouter.swift */; };
+		212149962A1C77F900AD93DE /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149952A1C77F900AD93DE /* SubscriptionViewModel.swift */; };
+		212149982A1C786400AD93DE /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149972A1C786400AD93DE /* SubscriptionModel.swift */; };
+		2121499F2A1C82DC00AD93DE /* AddressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2121499E2A1C82DC00AD93DE /* AddressRouter.swift */; };
+		212149A12A1C832A00AD93DE /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149A02A1C832A00AD93DE /* AddressViewModel.swift */; };
+		212149A32A1C836300AD93DE /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212149A22A1C836300AD93DE /* AddressModel.swift */; };
+		21603CC92A1A61BA009297A8 /* AddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CC82A1A61BA009297A8 /* AddressView.swift */; };
 		21603CCB2A1B31CC009297A8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CCA2A1B31CC009297A8 /* MapViewController.swift */; };
 		21603CCD2A1B338D009297A8 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CCC2A1B338D009297A8 /* LocationManager.swift */; };
 		21603CCF2A1BA2B4009297A8 /* FovouriteItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CCE2A1BA2B4009297A8 /* FovouriteItemsViewController.swift */; };
 		21603CD12A1BA567009297A8 /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CD02A1BA567009297A8 /* FinishViewController.swift */; };
+		21603CD52A1BBC26009297A8 /* ProductsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CD42A1BBC26009297A8 /* ProductsModel.swift */; };
+		21603CD72A1BBCD7009297A8 /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CD62A1BBCD7009297A8 /* Assembly.swift */; };
+		21603CDA2A1BBDAC009297A8 /* ProductsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21603CD92A1BBDAC009297A8 /* ProductsRouter.swift */; };
 		21BF0E2C2A19EDDF00830E4E /* CompleteButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BF0E2B2A19EDDF00830E4E /* CompleteButtonTableViewCell.swift */; };
-		21C74DEB2A15F15F002A5FA3 /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DEA2A15F15F002A5FA3 /* ProductsViewController.swift */; };
+		21C74DEB2A15F15F002A5FA3 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DEA2A15F15F002A5FA3 /* ProductsView.swift */; };
 		21C74DEF2A15F311002A5FA3 /* ProductsDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DEE2A15F311002A5FA3 /* ProductsDataBase.swift */; };
 		21C74DF12A160391002A5FA3 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DF02A160391002A5FA3 /* ProductCollectionViewCell.swift */; };
 		21C74DF32A1603FA002A5FA3 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DF22A1603FA002A5FA3 /* NSObject+Extension.swift */; };
 		21C74DF52A1635EA002A5FA3 /* CustomCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DF42A1635EA002A5FA3 /* CustomCounter.swift */; };
 		21C74DF72A174B05002A5FA3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DF62A174B05002A5FA3 /* CustomButton.swift */; };
-		21C74DFC2A177790002A5FA3 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DFB2A177790002A5FA3 /* CartViewController.swift */; };
+		21C74DFC2A177790002A5FA3 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DFB2A177790002A5FA3 /* CartView.swift */; };
 		21C74DFE2A177CF6002A5FA3 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74DFD2A177CF6002A5FA3 /* CartTableViewCell.swift */; };
-		21C74E012A17B956002A5FA3 /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74E002A17B956002A5FA3 /* SubscriptionViewController.swift */; };
+		21C74E012A17B956002A5FA3 /* SubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74E002A17B956002A5FA3 /* SubscriptionView.swift */; };
 		21C74E032A17BBF7002A5FA3 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74E022A17BBF7002A5FA3 /* AddressTableViewCell.swift */; };
 		21C74E052A17D985002A5FA3 /* ButtonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74E042A17D985002A5FA3 /* ButtonsCollectionViewCell.swift */; };
 		21C74E092A1882F7002A5FA3 /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C74E082A1882F7002A5FA3 /* OptionsTableViewCell.swift */; };
@@ -35,21 +50,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		21603CC82A1A61BA009297A8 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
+		2121497C2A1BC2FA00AD93DE /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
+		2121497E2A1BC96900AD93DE /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		212149802A1BE0C800AD93DE /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		212149872A1C6BD600AD93DE /* CartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
+		212149892A1C6C1C00AD93DE /* CartVeiwModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVeiwModel.swift; sourceTree = "<group>"; };
+		2121498C2A1C6DB200AD93DE /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
+		212149932A1C77A100AD93DE /* SubscriptionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionRouter.swift; sourceTree = "<group>"; };
+		212149952A1C77F900AD93DE /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		212149972A1C786400AD93DE /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
+		2121499E2A1C82DC00AD93DE /* AddressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressRouter.swift; sourceTree = "<group>"; };
+		212149A02A1C832A00AD93DE /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		212149A22A1C836300AD93DE /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		21603CC82A1A61BA009297A8 /* AddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressView.swift; sourceTree = "<group>"; };
 		21603CCA2A1B31CC009297A8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		21603CCC2A1B338D009297A8 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		21603CCE2A1BA2B4009297A8 /* FovouriteItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FovouriteItemsViewController.swift; sourceTree = "<group>"; };
 		21603CD02A1BA567009297A8 /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		21603CD42A1BBC26009297A8 /* ProductsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsModel.swift; sourceTree = "<group>"; };
+		21603CD62A1BBCD7009297A8 /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		21603CD92A1BBDAC009297A8 /* ProductsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRouter.swift; sourceTree = "<group>"; };
 		21BF0E2B2A19EDDF00830E4E /* CompleteButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteButtonTableViewCell.swift; sourceTree = "<group>"; };
-		21C74DEA2A15F15F002A5FA3 /* ProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewController.swift; sourceTree = "<group>"; };
+		21C74DEA2A15F15F002A5FA3 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
 		21C74DEE2A15F311002A5FA3 /* ProductsDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsDataBase.swift; sourceTree = "<group>"; };
 		21C74DF02A160391002A5FA3 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		21C74DF22A1603FA002A5FA3 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		21C74DF42A1635EA002A5FA3 /* CustomCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCounter.swift; sourceTree = "<group>"; };
 		21C74DF62A174B05002A5FA3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		21C74DFB2A177790002A5FA3 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		21C74DFB2A177790002A5FA3 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		21C74DFD2A177CF6002A5FA3 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
-		21C74E002A17B956002A5FA3 /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		21C74E002A17B956002A5FA3 /* SubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionView.swift; sourceTree = "<group>"; };
 		21C74E022A17BBF7002A5FA3 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		21C74E042A17D985002A5FA3 /* ButtonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCollectionViewCell.swift; sourceTree = "<group>"; };
 		21C74E082A1882F7002A5FA3 /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
@@ -75,12 +105,203 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21C74DEC2A15F2E0002A5FA3 /* MVVM */ = {
+		212149792A1BC29D00AD93DE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				21C74DFF2A17B934002A5FA3 /* Final TableView */,
+				21C74DEA2A15F15F002A5FA3 /* ProductsView.swift */,
+				21C74DF02A160391002A5FA3 /* ProductCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2121497A2A1BC2AB00AD93DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21603CD42A1BBC26009297A8 /* ProductsModel.swift */,
+				212149802A1BE0C800AD93DE /* Product.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2121497B2A1BC2D800AD93DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2121497C2A1BC2FA00AD93DE /* ProductsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		212149822A1C6B5D00AD93DE /* CartModule */ = {
+			isa = PBXGroup;
+			children = (
+				212149852A1C6B8200AD93DE /* Model */,
+				212149842A1C6B7A00AD93DE /* View */,
+				212149832A1C6B7000AD93DE /* ViewModel */,
+				212149862A1C6B8B00AD93DE /* Router */,
+			);
+			path = CartModule;
+			sourceTree = "<group>";
+		};
+		212149832A1C6B7000AD93DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				212149892A1C6C1C00AD93DE /* CartVeiwModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		212149842A1C6B7A00AD93DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21C74DFB2A177790002A5FA3 /* CartView.swift */,
+				21C74DFD2A177CF6002A5FA3 /* CartTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		212149852A1C6B8200AD93DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2121498C2A1C6DB200AD93DE /* CartModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		212149862A1C6B8B00AD93DE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				212149872A1C6BD600AD93DE /* CartRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2121498E2A1C76FB00AD93DE /* SubscriptionModule */ = {
+			isa = PBXGroup;
+			children = (
+				212149922A1C772000AD93DE /* Model */,
+				212149912A1C771900AD93DE /* View */,
+				212149902A1C770E00AD93DE /* ViewModel */,
+				2121498F2A1C770700AD93DE /* Router */,
+			);
+			path = SubscriptionModule;
+			sourceTree = "<group>";
+		};
+		2121498F2A1C770700AD93DE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				212149932A1C77A100AD93DE /* SubscriptionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		212149902A1C770E00AD93DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				212149952A1C77F900AD93DE /* SubscriptionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		212149912A1C771900AD93DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21C74E002A17B956002A5FA3 /* SubscriptionView.swift */,
+				21603CD02A1BA567009297A8 /* FinishViewController.swift */,
+				21C74E0A2A188307002A5FA3 /* TableViewCells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		212149922A1C772000AD93DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				212149972A1C786400AD93DE /* SubscriptionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		212149992A1C829B00AD93DE /* AddressModule */ = {
+			isa = PBXGroup;
+			children = (
+				2121499D2A1C82C500AD93DE /* Model */,
+				2121499C2A1C82B500AD93DE /* View */,
+				2121499B2A1C82AE00AD93DE /* ViewModel */,
+				2121499A2A1C82A800AD93DE /* Router */,
+			);
+			path = AddressModule;
+			sourceTree = "<group>";
+		};
+		2121499A2A1C82A800AD93DE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2121499E2A1C82DC00AD93DE /* AddressRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2121499B2A1C82AE00AD93DE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				212149A02A1C832A00AD93DE /* AddressViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2121499C2A1C82B500AD93DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21603CC82A1A61BA009297A8 /* AddressView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2121499D2A1C82C500AD93DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				212149A22A1C836300AD93DE /* AddressModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		212149A42A1CAA7B00AD93DE /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				21603CCA2A1B31CC009297A8 /* MapViewController.swift */,
+				21603CCC2A1B338D009297A8 /* LocationManager.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		21603CD22A1BBB73009297A8 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				212149992A1C829B00AD93DE /* AddressModule */,
+				2121498E2A1C76FB00AD93DE /* SubscriptionModule */,
+				212149822A1C6B5D00AD93DE /* CartModule */,
+				21603CD32A1BBB97009297A8 /* ProductsModule */,
+				21603CD62A1BBCD7009297A8 /* Assembly.swift */,
+				2121497E2A1BC96900AD93DE /* NetworkingService.swift */,
 			);
 			path = MVVM;
+			sourceTree = "<group>";
+		};
+		21603CD32A1BBB97009297A8 /* ProductsModule */ = {
+			isa = PBXGroup;
+			children = (
+				2121497A2A1BC2AB00AD93DE /* Model */,
+				212149792A1BC29D00AD93DE /* View */,
+				2121497B2A1BC2D800AD93DE /* ViewModel */,
+				21603CD82A1BBD96009297A8 /* Router */,
+			);
+			path = ProductsModule;
+			sourceTree = "<group>";
+		};
+		21603CD82A1BBD96009297A8 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				21603CD92A1BBDAC009297A8 /* ProductsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		21C74DF82A1771C4002A5FA3 /* Reusable UI Elements */ = {
@@ -92,15 +313,6 @@
 				21C74E0D2A18A214002A5FA3 /* CustomTextField.swift */,
 			);
 			path = "Reusable UI Elements";
-			sourceTree = "<group>";
-		};
-		21C74DFF2A17B934002A5FA3 /* Final TableView */ = {
-			isa = PBXGroup;
-			children = (
-				21C74E002A17B956002A5FA3 /* SubscriptionViewController.swift */,
-				21C74E0A2A188307002A5FA3 /* TableViewCells */,
-			);
-			path = "Final TableView";
 			sourceTree = "<group>";
 		};
 		21C74E0A2A188307002A5FA3 /* TableViewCells */ = {
@@ -133,19 +345,12 @@
 		21E3E5FE2A15E14E00B50E9E /* arbuz.kz */ = {
 			isa = PBXGroup;
 			children = (
-				21603CC82A1A61BA009297A8 /* AddressViewController.swift */,
-				21603CCA2A1B31CC009297A8 /* MapViewController.swift */,
-				21603CCC2A1B338D009297A8 /* LocationManager.swift */,
+				21603CD22A1BBB73009297A8 /* MVVM */,
 				21E3E6132A15EAF000B50E9E /* Application */,
-				21C74DEA2A15F15F002A5FA3 /* ProductsViewController.swift */,
-				21C74DF02A160391002A5FA3 /* ProductCollectionViewCell.swift */,
-				21C74DFB2A177790002A5FA3 /* CartViewController.swift */,
-				21C74DFD2A177CF6002A5FA3 /* CartTableViewCell.swift */,
-				21C74DEC2A15F2E0002A5FA3 /* MVVM */,
 				21E3E6152A15EB2900B50E9E /* Resources */,
-				21C74DF82A1771C4002A5FA3 /* Reusable UI Elements */,
+				212149A42A1CAA7B00AD93DE /* Map */,
 				21603CCE2A1BA2B4009297A8 /* FovouriteItemsViewController.swift */,
-				21603CD02A1BA567009297A8 /* FinishViewController.swift */,
+				21C74DF82A1771C4002A5FA3 /* Reusable UI Elements */,
 			);
 			path = arbuz.kz;
 			sourceTree = "<group>";
@@ -242,26 +447,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21C74E012A17B956002A5FA3 /* SubscriptionViewController.swift in Sources */,
+				212149982A1C786400AD93DE /* SubscriptionModel.swift in Sources */,
+				212149942A1C77A100AD93DE /* SubscriptionRouter.swift in Sources */,
+				21C74E012A17B956002A5FA3 /* SubscriptionView.swift in Sources */,
 				21C74E102A18B1A6002A5FA3 /* MainTabBarController.swift in Sources */,
 				21C74DF12A160391002A5FA3 /* ProductCollectionViewCell.swift in Sources */,
 				21603CCB2A1B31CC009297A8 /* MapViewController.swift in Sources */,
 				21C74E092A1882F7002A5FA3 /* OptionsTableViewCell.swift in Sources */,
+				2121498D2A1C6DB200AD93DE /* CartModel.swift in Sources */,
+				212149962A1C77F900AD93DE /* SubscriptionViewModel.swift in Sources */,
+				2121499F2A1C82DC00AD93DE /* AddressRouter.swift in Sources */,
 				21603CCF2A1BA2B4009297A8 /* FovouriteItemsViewController.swift in Sources */,
+				2121498A2A1C6C1C00AD93DE /* CartVeiwModel.swift in Sources */,
 				21C74E0C2A18A0B9002A5FA3 /* ContactsTableView.swift in Sources */,
 				21C74DFE2A177CF6002A5FA3 /* CartTableViewCell.swift in Sources */,
 				21BF0E2C2A19EDDF00830E4E /* CompleteButtonTableViewCell.swift in Sources */,
+				2121497D2A1BC2FA00AD93DE /* ProductsViewModel.swift in Sources */,
 				21603CD12A1BA567009297A8 /* FinishViewController.swift in Sources */,
-				21C74DFC2A177790002A5FA3 /* CartViewController.swift in Sources */,
+				21C74DFC2A177790002A5FA3 /* CartView.swift in Sources */,
 				21C74DF72A174B05002A5FA3 /* CustomButton.swift in Sources */,
 				21C74E0E2A18A214002A5FA3 /* CustomTextField.swift in Sources */,
-				21603CC92A1A61BA009297A8 /* AddressViewController.swift in Sources */,
+				21603CC92A1A61BA009297A8 /* AddressView.swift in Sources */,
+				212149812A1BE0C800AD93DE /* Product.swift in Sources */,
+				212149A32A1C836300AD93DE /* AddressModel.swift in Sources */,
 				21C74E052A17D985002A5FA3 /* ButtonsCollectionViewCell.swift in Sources */,
 				21C74DF52A1635EA002A5FA3 /* CustomCounter.swift in Sources */,
 				21E3E6002A15E14E00B50E9E /* AppDelegate.swift in Sources */,
-				21C74DEB2A15F15F002A5FA3 /* ProductsViewController.swift in Sources */,
+				21C74DEB2A15F15F002A5FA3 /* ProductsView.swift in Sources */,
+				212149882A1C6BD600AD93DE /* CartRouter.swift in Sources */,
+				2121497F2A1BC96900AD93DE /* NetworkingService.swift in Sources */,
+				21603CDA2A1BBDAC009297A8 /* ProductsRouter.swift in Sources */,
 				21C74DEF2A15F311002A5FA3 /* ProductsDataBase.swift in Sources */,
+				21603CD52A1BBC26009297A8 /* ProductsModel.swift in Sources */,
 				21603CCD2A1B338D009297A8 /* LocationManager.swift in Sources */,
+				21603CD72A1BBCD7009297A8 /* Assembly.swift in Sources */,
+				212149A12A1C832A00AD93DE /* AddressViewModel.swift in Sources */,
 				21E3E6022A15E14E00B50E9E /* SceneDelegate.swift in Sources */,
 				21C74DF32A1603FA002A5FA3 /* NSObject+Extension.swift in Sources */,
 				21C74E032A17BBF7002A5FA3 /* AddressTableViewCell.swift in Sources */,

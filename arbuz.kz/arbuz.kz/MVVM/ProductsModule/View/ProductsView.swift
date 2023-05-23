@@ -7,15 +7,31 @@
 
 import UIKit
 
-final class ProductsViewController: UIViewController {
+protocol ProductsView {
+    var viewModel: ProductsViewModel { get set }
+}
+
+final class ProductsViewImpl: UIViewController, ProductsView {
     
     //MARK: - Properties
     
+    var viewModel: ProductsViewModel
+    
     private let context = ["Все", "Фрукты", "Овощи", "Молочные"]
     private var previousIndexPath = IndexPath(row: 0, section: 0)
-    private var filteredProducts = products
+    private var products = [Product]()
     
     //MARK: - LifeCycle
+    
+    init(viewModel: ProductsViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +40,7 @@ final class ProductsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        productsCollectionView.reloadData()
+        viewModel.fetchProducts()
     }
     
     //MARK: - Setup
@@ -36,6 +52,7 @@ final class ProductsViewController: UIViewController {
         setupCollectionViews()
         setupLayout()
         setupNavigationBar()
+        setpViewModel()
     }
     
     private func setupCollectionViews(){
@@ -66,6 +83,25 @@ final class ProductsViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .white
+    }
+    
+    private func setpViewModel(){
+        viewModel.reloadCollectionView = { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.productsCollectionView.reloadData()
+            }
+        }
+        
+        viewModel.updateProducts = { [weak self] products in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.products = products
+        }
     }
     
     //MARK: - UI Elements
@@ -99,44 +135,16 @@ final class ProductsViewController: UIViewController {
         
         return collection
     }()
-    
-    //MARK: - Private methods
-    
-    private func filterProducts(type: String) {
-        var filteredType: String
-        
-        switch type {
-            case "Все":
-                filteredType = "All"
-            case "Фрукты":
-                filteredType = "Fruits"
-            case "Овощи":
-                filteredType = "Vegetables"
-            case "Молочные":
-                filteredType = "Milk"
-            default:
-                filteredType = type
-        }
-        
-        if filteredType == "All" {
-            filteredProducts = products
-        } else {
-            filteredProducts = products.filter { $0.type == filteredType }
-        }
-        
-        productsCollectionView.reloadData()
-    }
 }
 
 //MARK: - CollectionView Extension
 
-extension ProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ProductsViewImpl: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.productsCollectionView {
-            return filteredProducts.count
-        } else {
+        guard collectionView == self.collectionView else {
             return context.count
         }
+        return products.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -144,15 +152,15 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.identifier, for: indexPath) as? ProductCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            
-            cell.configureCell( product: filteredProducts[indexPath.row])
+            cell.product = products[indexPath.row]
             
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonsCollectionViewCell.identifier, for: indexPath)  as? ButtonsCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.configureCell(title: context[indexPath.row])
+            
+            cell.title = context[indexPath.row]
             if indexPath == previousIndexPath {
                 cell.didSelected()
             }
@@ -171,19 +179,18 @@ extension ProductsViewController: UICollectionViewDelegate, UICollectionViewData
             unselectedCell.unselect()
             previousIndexPath = indexPath
             
-            filterProducts(type: selectedCell.getType())
+            viewModel.filterProducts(type: selectedCell.getType())
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if collectionView == self.collectionView {
-            return CGSize(
-                width: context[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)]).width + 25,
-                height: 30)
+        guard collectionView == self.collectionView else {
+            return CGSize(width: view.frame.size.width/2-24, height: view.frame.size.width/2 + 50)
         }
+        return CGSize(
+            width: context[indexPath.item].size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)]).width + 25,
+            height: 30)
         
-        return CGSize(width: view.frame.size.width/2-24, height: view.frame.size.width/2 + 50)
     }
-
 }

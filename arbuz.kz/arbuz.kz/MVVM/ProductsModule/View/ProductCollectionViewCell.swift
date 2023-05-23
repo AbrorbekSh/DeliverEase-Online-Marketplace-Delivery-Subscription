@@ -10,39 +10,34 @@ import UIKit
 final class ProductCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: ProductCollectionViewCell.self)
-    private var product: Product?
+    
+    //MARK: - Properties
+    
+    var product: Product? {
+        didSet {
+            imageView.image = product?.image
+            productName.text = product?.name
+            counterButton.product = product
+        }
+    }
     
     //MARK: -LifeCycle
     
     override init(frame: CGRect){
         super.init(frame: frame)
         setupView()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        NSLayoutConstraint.activate([
-            contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            imageView.heightAnchor.constraint(equalToConstant: contentView.frame.size.width),
-            imageView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width),
-            
-            counterButton.heightAnchor.constraint(equalToConstant: 35),
-            counterButton.widthAnchor.constraint(equalToConstant: 110),
-            
-            productName.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil
+        productName.text = nil
+        counterButton.product = nil
     }
     
     //MARK: - Setup
@@ -54,15 +49,23 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         contentStackView.addArrangedSubview(counterButton)
     }
     
-    //MARK: - Internal Methods
-    
-    func configureCell(product: Product){
-        imageView.image = product.image
-        productName.text = product.name
-        
-        counterButton.configureCounter(product: product)
+    private func setupLayout(){
+        NSLayoutConstraint.activate([
+            contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            contentStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor),
+            
+            imageView.heightAnchor.constraint(equalToConstant: contentView.frame.size.width),
+            imageView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width),
+            
+            counterButton.heightAnchor.constraint(equalToConstant: 35),
+            counterButton.widthAnchor.constraint(equalToConstant: 110),
+            
+            productName.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
-    
+      
     //MARK: - UI Elements
     
     private let contentStackView: UIStackView = {
@@ -102,7 +105,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var counterButton: CustomCounter = {
+    private lazy var counterButton: CustomCounter = {
         let button = CustomCounter()
         button.translatesAutoresizingMaskIntoConstraints = false
         

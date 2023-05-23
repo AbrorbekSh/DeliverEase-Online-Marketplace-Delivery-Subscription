@@ -9,10 +9,6 @@ import UIKit
 
 final class FinishViewController: UIViewController {
     
-    //MARK: - Propertires
-    
-    var parentView: SubscriptionViewController?
-    
     //MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -54,7 +50,6 @@ final class FinishViewController: UIViewController {
     
     @objc private func dismissButton(){
         dismiss(animated: true)
-        parentView?.tabBarController?.selectedIndex = 0
     }
     
     //MARK: - UI Elements
@@ -63,8 +58,8 @@ final class FinishViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
-        label.text = "Ваш заказ принят!"
-        label.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+        label.text = "Вы успешно оформили подписку!"
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textColor = .systemGreen
         label.textAlignment = .center
         label.backgroundColor = .white

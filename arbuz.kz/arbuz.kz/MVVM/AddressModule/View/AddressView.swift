@@ -5,15 +5,32 @@
 //  Created by Аброрбек on 21.05.2023.
 //
 
-import UIKit
 
-final class AddressViewController: UIViewController {
+import UIKit
+    
+protocol AddressView {
+    var viewModel: AddressViewModel { get set }
+    var completion: ((String) -> Void)? { get set }
+}
+
+final class AddressViewImpl: UIViewController, AddressView {
     
     //MARK: - Properties
     
     var completion: ((String) -> Void)?
+    var viewModel: AddressViewModel
 
     //MARK: - LifeCycle
+    
+    init(viewModel: AddressViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,6 +97,44 @@ final class AddressViewController: UIViewController {
             continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
         ])
+    }
+    
+    //MARK: - Objective-C methods
+    
+    @objc private func continueButtonPressed() {
+        var addressComponents = [String]()
+         
+         if !streetTextField.text.isEmpty {
+             addressComponents.append(streetTextField.text)
+         } else {
+             viewModel.dismissAddressView()
+             return
+         }
+         
+        if !flatTextField.text.isEmpty {
+             addressComponents.append("кв. \(flatTextField.text)")
+         }
+         
+         if !podezdTextField.text.isEmpty {
+             addressComponents.append("под. \(podezdTextField.text)")
+         }
+         
+         if !floorTextField.text.isEmpty {
+             addressComponents.append("эт. \(floorTextField.text.isEmpty)")
+         }
+         
+         let address = addressComponents.joined(separator: ", ")
+         completion?(address)
+         viewModel.dismissAddressView()
+    }
+    
+    @objc private func getLocationButtonPressed() {
+        let completion = { [weak self] name in
+            DispatchQueue.main.async {
+                self?.streetTextField.setText(text: name)
+            }
+        }
+        viewModel.openMap(with: completion)
     }
     
     //MARK: - UI Elements
@@ -164,51 +219,9 @@ final class AddressViewController: UIViewController {
         
         return button
     }()
-    
-    //MARK: - Objective-C methods
-    
-    @objc private func continueButtonPressed() {
-        var address = ""
-        
-        if !streetTextField.text.isEmpty {
-            address += streetTextField.text
-        } else {
-            self.navigationController?.popViewController(animated: true)
-            return
-        }
-        
-        if !flatTextField.text.isEmpty {
-            address += ", кв. "
-            address += flatTextField.text
-        }
-        
-        if !podezdTextField.text.isEmpty {
-            address += ", под. "
-            address += podezdTextField.text
-        }
-        
-        if !floorTextField.text.isEmpty {
-            address += ", эт. "
-            address += floorTextField.text
-        }
-        
-        
-        completion?(address)
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func getLocationButtonPressed() {
-        let mapViewController = MapViewController()
-        mapViewController.completion = { [weak self] name in
-            self?.streetTextField.setText(text: name)
-        }
-        let naviagtionController = UINavigationController(rootViewController: mapViewController)
-        naviagtionController.modalPresentationStyle = .fullScreen
-        present(naviagtionController, animated: true, completion: nil)
-    }
 }
 
 
-extension AddressViewController: UITextFieldDelegate {
+extension AddressViewImpl: UITextFieldDelegate {
     
 }

@@ -6,14 +6,31 @@
 //
 
 import UIKit
+    
+protocol CartView {
+    var viewModel: CartViewModel { get set }
+}
 
-final class CartViewController: UIViewController {
+final class CartViewImpl: UIViewController,  CartView {
     
     //MARK: - Propersties
+  
+    var viewModel: CartViewModel
     
-    private var productsCart: [Product] = []
+    private var cartProducts: [Product] = []
     
     //MARK: - LifeCycle
+    
+    init(viewModel: CartViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +39,7 @@ final class CartViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        productsCart = products.filter({ $0.requiredAmount != 0 })
-        productsTableView.reloadData()
+        viewModel.fetchProducts()
     }
     
     //MARK: - Setup
@@ -35,6 +51,7 @@ final class CartViewController: UIViewController {
         setupProductsTableView()
         setupLayout()
         setupNavigationBar()
+        setupViewModel()
     }
     
     private func setupLayout(){
@@ -64,11 +81,29 @@ final class CartViewController: UIViewController {
         productsTableView.dataSource = self
     }
     
+    private func setupViewModel() {
+        viewModel.reloadTableView = { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                strongSelf.productsTableView.reloadData()
+            }
+        }
+        
+        viewModel.updateCartProducts = { [weak self] products in
+            guard let strongSelf = self else {
+                return
+            }
+            strongSelf.cartProducts = products
+        }
+    }
+    
     //MARK: - Objective-C methods
     
     @objc private func continueButtonPressed(){
-        let subscriptionlViewController = SubscriptionViewController()
-        self.navigationController?.pushViewController(subscriptionlViewController, animated: true)
+        viewModel.showSubscriptionPage()
     }
     
     //MARK: - UI Elements
@@ -95,9 +130,9 @@ final class CartViewController: UIViewController {
 
 //MARK: - UITableViewDataSource and UITableViewDelegate extension
 
-extension CartViewController: UITableViewDelegate, UITableViewDataSource {
+extension CartViewImpl: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return productsCart.count
+        return cartProducts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -105,7 +140,8 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
         cell.selectionStyle = .none
-        cell.configureCell(product: productsCart[indexPath.row])
+        cell.product = cartProducts[indexPath.row]
+
         return cell
     }
     

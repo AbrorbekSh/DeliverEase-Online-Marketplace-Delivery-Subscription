@@ -95,7 +95,8 @@ extension OptionsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             cell.didSelected()
         }
         guard let context = context else { return UICollectionViewCell() }
-        cell.configureCell(title: context[indexPath.row])
+        cell.title = context[indexPath.row]
+
         return cell
     }
     

@@ -26,23 +26,23 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setViews() {
-        let homeViewController = ProductsViewController()
-        let homeViewControllerNav = UINavigationController(rootViewController: homeViewController)
-        homeViewController.tabBarItem.image = UIImage(systemName: "house")
+        let homeView = Assembly.shared.makeProductsModuleView()
+        let homeViewNav = UINavigationController(rootViewController: homeView)
+        homeView.tabBarItem.image = UIImage(systemName: "house")
 
-        let cartViewController = CartViewController()
-        let cartViewControllerNav = UINavigationController(rootViewController: cartViewController)
-        cartViewController.tabBarItem.image = UIImage(systemName: "cart")
+        let cartView = Assembly.shared.makeCartModuleView()
+        let cartViewNav = UINavigationController(rootViewController: cartView)
+        cartView.tabBarItem.image = UIImage(systemName: "cart")
         
-        let favouritesViewController = FovouriteItemsViewController()
-        let favouritesViewControllerNav = UINavigationController(rootViewController: favouritesViewController)
-        favouritesViewController.tabBarItem.image = UIImage(systemName: "heart")
+        let favouritesView = FovouriteItemsViewController()
+        let favouritesViewNav = UINavigationController(rootViewController: favouritesView)
+        favouritesView.tabBarItem.image = UIImage(systemName: "heart")
         
-        let profileViewController = SubscriptionViewController()
-        let profileViewControllerNav = UINavigationController(rootViewController: profileViewController)
-        profileViewController.tabBarItem.image = UIImage(systemName: "person")
+        let profileView = Assembly.shared.makeSubscriptionModuleView()
+        let profileViewNav = UINavigationController(rootViewController: profileView)
+        profileView.tabBarItem.image = UIImage(systemName: "person")
         
-        setViewControllers([homeViewControllerNav, cartViewControllerNav, favouritesViewControllerNav, profileViewControllerNav], animated: true)
+        setViewControllers([homeViewNav, cartViewNav, favouritesViewNav, profileViewNav], animated: true)
     }
     
 }

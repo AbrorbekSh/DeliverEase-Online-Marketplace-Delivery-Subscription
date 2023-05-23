@@ -7,9 +7,15 @@
 
 import UIKit
 
-final class SubscriptionViewController: UIViewController {
+protocol SubscriptionView {
+    var viewModel: SubscriptionViewModel { get set }
+}
+
+final class SubscriptionViewImpl: UIViewController, SubscriptionView {
     
     //MARK: - Properties
+    
+    var viewModel: SubscriptionViewModel
     
     private let times = ["07:00-09:00", "08:00-10:00", "09:00-11:00", "10:00-12:00", "11:00-13:00", "12:00-14:00", "13:00-15:00", "14:00-16:00", "15:00-17:00", "16:00-18:00", "17:00-19:00", "18:00-20:00", "19:00-21:00", "20:00-22:00", "21:00-23:00", "22:00-00:00"]
 
@@ -18,6 +24,16 @@ final class SubscriptionViewController: UIViewController {
     private let periods = ["2 недели", "1 месяц", "2 месяца", "3 месяца", "6 месяцев", "1 год"]
     
     //MARK: - LifeCycle
+    
+    init(viewModel: SubscriptionViewModel) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +95,7 @@ final class SubscriptionViewController: UIViewController {
 
 //MARK: - UITableViewDelegate and UITableViewDelegate Extension
 
-extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource {
+extension SubscriptionViewImpl: UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - UITableViewDataSource
 
@@ -150,7 +166,6 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = tableView.dequeueReusableCell(withIdentifier: CompleteButtonTableViewCell.identifier, for: indexPath) as? CompleteButtonTableViewCell else {
                 return UITableViewCell()
             }
-            cell.view = self
             cell.selectionStyle = .none
             return cell
 
@@ -188,14 +203,19 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     // MARK: - UITableViewDelegate
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             guard let cell = contentTableView.cellForRow(at: indexPath) as? AddressTableViewCell else { return }
 
-            let addressViewController = AddressViewController()
-            addressViewController.completion = { address in
-                cell.setupAddress(address: address)
+            let completion = { address in
+                    cell.setupAddress(address: address)
             }
-            self.navigationController?.pushViewController(addressViewController, animated: true)
+            
+            viewModel.openAddressPage(with: completion)
+        case 5:
+            viewModel.openFinishPage()
+        default:
+            return
         }
     }
 
@@ -217,6 +237,6 @@ extension SubscriptionViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
-extension SubscriptionViewController: UITextFieldDelegate {
+extension SubscriptionViewImpl: UITextFieldDelegate {
 
 }

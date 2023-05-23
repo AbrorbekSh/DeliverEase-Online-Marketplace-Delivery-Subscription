@@ -7,14 +7,16 @@
 
 import UIKit
 
-class CustomCounter: UIView {
+final class CustomCounter: UIView {
     
     //MARK: - Properties
     
     private var counter: Float = 0
 
-    private var product: Product? {
+    var product: Product? {
         didSet {
+            priceLabel.text = String(product?.price ?? 1200) + " тг"
+            counter = product?.requiredAmount ?? 0
             incrementCounter()
             decrementCounter()
         }
@@ -73,14 +75,6 @@ class CustomCounter: UIView {
             counterLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             counterLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
-    }
-    
-    //MARK: - Internal methdos
-    
-    func configureCounter(product: Product){
-        priceLabel.text = String(product.price) + " тг"
-        counter = product.requiredAmount
-        self.product = product
     }
     
     //MARK: - UI Elements
