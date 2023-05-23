@@ -48,6 +48,7 @@ final class CartViewImpl: UIViewController,  CartView {
         view.backgroundColor = .white
         view.addSubview(productsTableView)
         view.addSubview(continueButton)
+        view.addSubview(popupLabel)
         setupProductsTableView()
         setupLayout()
         setupNavigationBar()
@@ -64,7 +65,12 @@ final class CartViewImpl: UIViewController,  CartView {
             continueButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             continueButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            continueButton.heightAnchor.constraint(equalToConstant: 55)
+            continueButton.heightAnchor.constraint(equalToConstant: 55),
+            
+            popupLabel.heightAnchor.constraint(equalToConstant: 30),
+            popupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            popupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            popupLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
         ])
     }
     
@@ -100,10 +106,27 @@ final class CartViewImpl: UIViewController,  CartView {
         }
     }
     
+    //MARK: - Private methods
+    
+    private func popupLabelAnimate(){
+        UIView.animate(withDuration: 1) {
+            self.popupLabel.alpha = 1
+        } completion: { _ in
+            let animation: () -> Void = {
+                self.popupLabel.alpha = 0
+            }
+            UIView.animate(withDuration: 1.5, animations: animation, completion: nil)
+        }
+    }
+    
     //MARK: - Objective-C methods
     
     @objc private func continueButtonPressed(){
-        viewModel.showSubscriptionPage()
+        if cartProducts.count == 0 {
+            popupLabelAnimate()
+        } else {
+            viewModel.showSubscriptionPage()
+        }
     }
     
     //MARK: - UI Elements
@@ -117,6 +140,15 @@ final class CartViewImpl: UIViewController,  CartView {
         table.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.identifier)
         
         return table
+    }()
+    
+    private let popupLabel: PopupLabel = {
+        let label = PopupLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0
+        label.text = "Корзина пуста!"
+        
+        return label
     }()
     
     private let continueButton: CustomButton = {

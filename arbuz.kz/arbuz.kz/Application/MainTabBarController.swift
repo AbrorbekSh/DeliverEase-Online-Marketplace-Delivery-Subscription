@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
@@ -18,6 +20,15 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            
+            tabBar.standardAppearance = appearance
+            tabBar.scrollEdgeAppearance = tabBar.standardAppearance
+        }
+        
         tabBar.tintColor = .systemGreen
         tabBar.unselectedItemTintColor = .black
         tabBar.backgroundColor = .white
