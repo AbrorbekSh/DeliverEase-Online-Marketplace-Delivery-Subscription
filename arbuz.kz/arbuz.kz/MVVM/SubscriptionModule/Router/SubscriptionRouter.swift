@@ -37,7 +37,7 @@ final class SubscriptionRouterImpl: SubscriptionRouter {
             return
         }
 
-        addressViewController.completion = completion
+        addressViewController.validationManager = completion
         view.navigationController?.pushViewController(addressViewController, animated: true)
     }
     

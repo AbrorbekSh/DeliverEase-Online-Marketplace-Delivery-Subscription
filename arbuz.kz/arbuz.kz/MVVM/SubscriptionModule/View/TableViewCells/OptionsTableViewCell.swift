@@ -15,6 +15,7 @@ final class OptionsTableViewCell: UITableViewCell {
     
     private var context: [String]?
     private var previousIndexPath: IndexPath?
+    var validationManager: ((String) -> Void)?
 
     //MARK: - LifeCycle
     
@@ -111,7 +112,7 @@ extension OptionsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.collectionView {
             guard let selectedCell = collectionView.cellForItem(at: indexPath as IndexPath) as? ButtonsCollectionViewCell else { return }
-            
+            validationManager?(selectedCell.getType())
             selectedCell.didSelected()
             
             

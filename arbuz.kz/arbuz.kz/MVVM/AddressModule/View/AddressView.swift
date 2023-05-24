@@ -10,14 +10,14 @@ import UIKit
     
 protocol AddressView {
     var viewModel: AddressViewModel { get set }
-    var completion: ((String) -> Void)? { get set }
+    var validationManager: ((String) -> Void)? { get set }
 }
 
 final class AddressViewImpl: UIViewController, AddressView {
     
     //MARK: - Properties
     
-    var completion: ((String) -> Void)?
+    var validationManager: ((String) -> Void)?
     var viewModel: AddressViewModel
 
     //MARK: - LifeCycle
@@ -124,7 +124,7 @@ final class AddressViewImpl: UIViewController, AddressView {
          }
          
          let address = addressComponents.joined(separator: ", ")
-         completion?(address)
+         validationManager?(address)
          viewModel.dismissAddressView()
     }
     

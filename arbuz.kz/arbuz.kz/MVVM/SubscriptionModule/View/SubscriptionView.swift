@@ -52,6 +52,7 @@ final class SubscriptionViewImpl: UIViewController, SubscriptionView {
     private func setupView(){
         view.backgroundColor = .white
         view.addSubview(contentTableView)
+        view.addSubview(popupLabel)
         setupLayout()
         setupTableView()
         setupNavigationController()
@@ -63,6 +64,11 @@ final class SubscriptionViewImpl: UIViewController, SubscriptionView {
             contentTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             contentTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            popupLabel.heightAnchor.constraint(equalToConstant: 30),
+            popupLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            popupLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            popupLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
         ])
     }
     
@@ -73,6 +79,19 @@ final class SubscriptionViewImpl: UIViewController, SubscriptionView {
     
     private func setupNavigationController(){
         navigationController?.navigationBar.tintColor = .systemGreen
+    }
+    
+    //MARK: - Private methods
+    
+    private func popupLabelAnimate(){
+        UIView.animate(withDuration: 1) {
+            self.popupLabel.alpha = 1
+        } completion: { _ in
+            let animation: () -> Void = {
+                self.popupLabel.alpha = 0
+            }
+            UIView.animate(withDuration: 1.5, animations: animation, completion: nil)
+        }
     }
     
     //MARK: - UI Elements
@@ -90,6 +109,14 @@ final class SubscriptionViewImpl: UIViewController, SubscriptionView {
         table.register(CompleteButtonTableViewCell.self, forCellReuseIdentifier: CompleteButtonTableViewCell.identifier)
         
         return table
+    }()
+    
+    private let popupLabel: PopupLabel = {
+        let label = PopupLabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.alpha = 0
+        
+        return label
     }()
 }
 
@@ -122,6 +149,7 @@ extension SubscriptionViewImpl: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: AddressTableViewCell.identifier, for: indexPath) as? AddressTableViewCell else {
                 return UITableViewCell()
             }
+
             cell.selectionStyle = .none
             return cell
 
@@ -134,10 +162,19 @@ extension SubscriptionViewImpl: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.section {
             case 1:
                 cell.configureCell(context: dates)
+                cell.validationManager = { day in
+                    self.viewModel.validateDay(day: day)
+                }
             case 2:
                 cell.configureCell(context: times)
+                cell.validationManager = { time in
+                    self.viewModel.validateTime(time: time)
+                }
             case 3:
                 cell.configureCell(context: periods)
+                cell.validationManager = { period in
+                    self.viewModel.validatePeriod(period: period)
+                }
             default:
                 break
             }
@@ -207,13 +244,16 @@ extension SubscriptionViewImpl: UITableViewDelegate, UITableViewDataSource {
         case 0:
             guard let cell = contentTableView.cellForRow(at: indexPath) as? AddressTableViewCell else { return }
 
-            let completion = { address in
-                    cell.setupAddress(address: address)
+            let completion: ((String) -> Void) = { address in
+                cell.setupAddress(address: address)
+                self.viewModel.validateAddress(address:  address)
             }
             
             viewModel.openAddressPage(with: completion)
         case 5:
-            viewModel.openFinishPage()
+            if !viewModel.openFinishPage() {
+                popupLabelAnimate()
+            }
         default:
             return
         }
@@ -238,5 +278,14 @@ extension SubscriptionViewImpl: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SubscriptionViewImpl: UITextFieldDelegate {
-
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        if text.isNumber {
+            viewModel.validatePhoneNumber(number: text)
+            return
+        }
+        viewModel.validateName(name: text)
+    }
 }
