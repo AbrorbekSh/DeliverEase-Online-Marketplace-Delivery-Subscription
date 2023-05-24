@@ -47,7 +47,7 @@ final class Assembly {
     }
     
     func makeSubscriptionModuleView() -> UIViewController {
-        let model = SubscriptionModel()
+        let model = SubscriptionModel(address: AddressModel(address: ""), day: "", time: "", period: "", name: "", phoneNumber: "")
         
         let router = SubscriptionRouterImpl(
             model: model,
@@ -58,7 +58,7 @@ final class Assembly {
     }
     
     func makeAddressModuleView() -> UIViewController {
-        let model = AddressModel()
+        let model = AddressModel(address: "")
         
         let router = AddressRouterImpl(
             model: model,
